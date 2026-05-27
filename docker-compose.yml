@@ -97,7 +97,7 @@ services:
       - mlops-net
 
   minio-init:
-    image: minio/mc:RELEASE.2024-08-26T15-33-07Z
+    image: minio/mc:RELEASE.2024-09-16T17-43-14Z
     container_name: mlops-minio-init
     depends_on:
       minio:

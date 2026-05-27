@@ -41,6 +41,10 @@ Thumbs.db
 # Notebooks
 .ipynb_checkpoints/
 
+# PowerPoint
+*.ppt
+*.pptx
+
 # Preview PNGs (gerados via LibreOffice - nao versionar)
 docs/preview/
 *.ppm

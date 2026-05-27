@@ -1,0 +1,22 @@
+digraph G {
+    rankdir=LR;
+    bgcolor="white";
+    node [shape=box, style="filled,rounded", fontname="Helvetica", fontsize=14,
+          fontcolor="white", margin="0.25,0.15", penwidth=0];
+    edge [color="#595959", penwidth=2, arrowsize=1.0];
+    splines=spline;
+    nodesep=0.6; ranksep=1.0;
+    L [label="Load features\nMinIO", fillcolor="#1F4E79", shape=box, fontcolor="white"];
+    T [label="Train\nRF + XGBoost", fillcolor="#1F4E79", shape=box, fontcolor="white"];
+    EV [label="Evaluate\nAUC F1 PR-AUC", fillcolor="#595959", shape=box, fontcolor="white"];
+    M [label="MLflow Tracking\nparams metrics\nartifacts signature", fillcolor="#ED7D31", shape=box, fontcolor="white"];
+    R [label="Registry\nNone -> Staging", fillcolor="#1F4E79", shape=box, fontcolor="white"];
+    P [label="Promote\nProduction", fillcolor="#5A8F4B", shape=box, fontcolor="white"];
+    API [label="FastAPI\n/predict /search", fillcolor="#1F4E79", shape=box, fontcolor="white"];
+    L -> T;
+    T -> EV;
+    EV -> M;
+    M -> R;
+    R -> P;
+    P -> API;
+}

@@ -1,0 +1,35 @@
+digraph G {
+    rankdir=LR;
+    bgcolor="white";
+    node [shape=box, style="filled,rounded", fontname="Helvetica", fontsize=14,
+          fontcolor="white", margin="0.25,0.15", penwidth=0];
+    edge [color="#595959", penwidth=2, arrowsize=1.0];
+    nodesep=0.5; ranksep=1.2;
+
+    subgraph cluster_pipe {
+        label="Backend MLOps (Docker - interno)";
+        labeljust=l; labelloc=t;
+        style="rounded,filled"; fillcolor="#EAF3F8"; color="#1F4E79";
+        fontcolor="#1F4E79"; fontsize=16; fontname="Helvetica";
+        B1 [label="Airflow\n3 DAGs", fillcolor="#1F4E79"];
+        B2 [label="MLflow\nTracking + Registry", fillcolor="#1F4E79"];
+        B3 [label="MinIO\ndata lake", fillcolor="#1F4E79"];
+        B4 [label="Postgres\npgvector", fillcolor="#ED7D31"];
+    }
+    subgraph cluster_client {
+        label="Cliente Final consome";
+        labeljust=l; labelloc=t;
+        style="rounded,filled"; fillcolor="#E2F0D9"; color="#5A8F4B";
+        fontcolor="#5A8F4B"; fontsize=16; fontname="Helvetica";
+        A1 [label="FastAPI\n/predict", fillcolor="#5A8F4B"];
+        A2 [label="FastAPI\n/search semantico", fillcolor="#5A8F4B"];
+        A3 [label="UIs operacionais\nAirflow MLflow MinIO", fillcolor="#5A8F4B"];
+    }
+    B1 -> B3;
+    B1 -> B2;
+    B2 -> B3;
+    B2 -> A1;
+    B3 -> A1;
+    B4 -> A2;
+    B3 -> A3;
+}

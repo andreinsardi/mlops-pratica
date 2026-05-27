@@ -1,0 +1,17 @@
+flowchart LR
+  subgraph AF[Airflow ORQUESTRA]
+    AF1[Quando rodar]
+    AF2[Em que ordem]
+    AF3[Retry/alert]
+  end
+  subgraph ML[MLflow VERSIONA MODELOS]
+    ML1[Codigo do experimento]
+    ML2[Params + metrics]
+    ML3[Artifacts pickle]
+    ML4[Stages do Registry]
+  end
+  subgraph LK[MinIO VERSIONA DADOS]
+    LK1[raw por hora]
+    LK2[curated]
+    LK3[features]
+  end

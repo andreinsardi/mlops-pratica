@@ -1,0 +1,79 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+build/
+
+# Ambiente
+.env
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Dados / Logs
+data/
+logs/
+mlruns/
+plugins/
+volumes/
+
+# Docker
+*.pid
+
+# SO
+.DS_Store
+Thumbs.db
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Preview PNGs (gerados via LibreOffice - nao versionar)
+docs/preview/
+*.ppm
+
+# OneDrive sync artifacts
+.tmp.driveupload/
+*.cloud
+*.cloudf
+
+# Office lock files
+~$*
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Env / secrets
+.env
+.env.local
+*.env
+
+# Diagram previews / intermediates
+docs/preview/
+*.ppm
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

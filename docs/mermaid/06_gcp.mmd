@@ -1,0 +1,6 @@
+flowchart LR
+  INET[Internet] --> FW[Firewall]
+  FW --> VM[Compute Engine]
+  VM --> DISK[(Persistent SSD)]
+  VM -.-> CSQL[(Cloud SQL futuro)]
+  VM -.-> GCS[(GCS bucket futuro)]

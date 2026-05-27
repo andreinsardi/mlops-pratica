@@ -1,0 +1,7 @@
+flowchart LR
+  L[Load features] --> T[Train RF+XGBoost]
+  T --> E[Evaluate]
+  E --> M[MLflow Tracking]
+  M --> R[Registry Staging]
+  R --> P[Production]
+  P --> API[FastAPI /predict]

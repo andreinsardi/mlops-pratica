@@ -1,0 +1,23 @@
+# MLOps stack
+mlflow==2.16.2
+scikit-learn==1.5.1
+xgboost==2.1.1
+pandas==2.2.2
+numpy==1.26.4
+pyarrow==17.0.0
+
+# Storage
+boto3==1.35.21
+s3fs==2024.6.1
+psycopg2-binary==2.9.9
+sqlalchemy==1.4.53
+pgvector==0.3.6
+
+# HTTP / API
+requests==2.32.3
+tenacity==8.5.0
+
+# Embeddings (offline, CPU)
+sentence-transformers==3.1.1
+torch==2.4.1
+--extra-index-url https://download.pytorch.org/whl/cpu

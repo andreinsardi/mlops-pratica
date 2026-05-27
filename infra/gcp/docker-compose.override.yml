@@ -1,0 +1,35 @@
+# =============================================================================
+# Override para deploy em VM GCP - aponta volumes para o disco persistente
+# montado em /opt/mlops/volumes
+# Uso:
+#   docker compose -f docker-compose.yml -f infra/gcp/docker-compose.override.yml up -d
+# =============================================================================
+services:
+  postgres:
+    volumes:
+      - /opt/mlops/volumes/postgres:/var/lib/postgresql/data
+      - ./infra/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+  minio:
+    volumes:
+      - /opt/mlops/volumes/minio:/data
+
+  airflow-webserver:
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./src:/opt/airflow/src
+      - /opt/mlops/logs/airflow:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+
+  airflow-scheduler:
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./src:/opt/airflow/src
+      - /opt/mlops/logs/airflow:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+
+volumes:
+  postgres_data:
+    external: false
+  minio_data:
+    external: false

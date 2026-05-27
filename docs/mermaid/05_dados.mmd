@@ -1,0 +1,7 @@
+flowchart LR
+  API[HN API] --> RAW[raw parquet]
+  RAW --> CUR[curated parquet]
+  CUR --> FT[features tabular]
+  CUR --> FX[features text]
+  FT --> PG[(Postgres pgvector)]
+  FX --> PG

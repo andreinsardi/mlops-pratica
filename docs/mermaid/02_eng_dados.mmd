@@ -1,0 +1,7 @@
+flowchart LR
+  A[extract HN] --> B[raw parquet]
+  B --> C[curate dedup]
+  C --> D1[features tabular]
+  C --> D2[features text]
+  D1 --> E1[treino preditivo]
+  D2 --> E2[treino embeddings]

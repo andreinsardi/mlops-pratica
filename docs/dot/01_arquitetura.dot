@@ -1,0 +1,27 @@
+digraph G {
+    rankdir=LR;
+    bgcolor="white";
+    node [shape=box, style="filled,rounded", fontname="Helvetica", fontsize=14,
+          fontcolor="white", margin="0.25,0.15", penwidth=0];
+    edge [color="#595959", penwidth=2, arrowsize=1.0];
+    splines=spline;
+    nodesep=0.6; ranksep=1.0;
+    API [label="HackerNews\nAPI", fillcolor="#5A8F4B", shape=box, fontcolor="white"];
+    AF [label="Airflow\nweb + scheduler", fillcolor="#1F4E79", shape=box, fontcolor="white"];
+    MIN [label="MinIO\ndata lake S3", fillcolor="#1F4E79", shape=cylinder, fontcolor="white"];
+    MLF [label="MLflow\nTracking + Registry", fillcolor="#1F4E79", shape=box, fontcolor="white"];
+    M1 [label="ML Preditivo\nsklearn + XGBoost", fillcolor="#595959", shape=box, fontcolor="white"];
+    M2 [label="Embeddings\nMiniLM-L6 (CPU)", fillcolor="#595959", shape=box, fontcolor="white"];
+    PG [label="Postgres + pgvector", fillcolor="#ED7D31", shape=cylinder, fontcolor="white"];
+    SRV [label="FastAPI\n/predict /search", fillcolor="#1F4E79", shape=box, fontcolor="white"];
+    API -> AF;
+    AF -> MIN;
+    MIN -> MLF;
+    MIN -> M1;
+    MIN -> M2;
+    M1 -> MLF;
+    M2 -> MLF;
+    M2 -> PG;
+    MLF -> SRV;
+    PG -> SRV;
+}

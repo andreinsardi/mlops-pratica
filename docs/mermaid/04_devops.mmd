@@ -1,0 +1,6 @@
+flowchart LR
+  F[feature/*] --> D[develop] --> R[release/*] --> MA[main] --> T[tag v*]
+  F -.-> CI1[CI ruff+pytest]
+  R -.-> CI2[CI docker build]
+  MA -.-> CD1[CD staging]
+  T -.-> CD2[CD producao]

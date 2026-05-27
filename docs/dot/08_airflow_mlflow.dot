@@ -1,0 +1,41 @@
+digraph G {
+    rankdir=TB;
+    bgcolor="white";
+    node [shape=box, style="filled,rounded", fontname="Helvetica", fontsize=13,
+          fontcolor="white", margin="0.20,0.12", penwidth=0];
+    edge [style=invis];
+    nodesep=0.3; ranksep=0.4;
+
+    subgraph cluster_af {
+        label="Airflow ORQUESTRA";
+        labeljust=l; labelloc=t; rank=same;
+        style="rounded,filled"; fillcolor="#EAF3F8"; color="#1F4E79";
+        fontcolor="#1F4E79"; fontsize=18; fontname="Helvetica";
+        AF1 [label="Quando rodar\n(cron schedule)", fillcolor="#1F4E79"];
+        AF2 [label="Em que ordem\n(dependencias)", fillcolor="#1F4E79"];
+        AF3 [label="Retry e alerta\n(falhas)", fillcolor="#1F4E79"];
+        AF4 [label="Idempotencia\n(reexecutar safe)", fillcolor="#1F4E79"];
+        AF1 -> AF2 -> AF3 -> AF4;
+    }
+    subgraph cluster_ml {
+        label="MLflow VERSIONA MODELOS";
+        labeljust=l; labelloc=t; rank=same;
+        style="rounded,filled"; fillcolor="#FFF2CC"; color="#C28A00";
+        fontcolor="#C28A00"; fontsize=18; fontname="Helvetica";
+        ML1 [label="Codigo do experimento\n(run id)", fillcolor="#ED7D31"];
+        ML2 [label="Params + metrics\n(track)", fillcolor="#ED7D31"];
+        ML3 [label="Artifacts\n(pipeline pickle)", fillcolor="#ED7D31"];
+        ML4 [label="Stages do Registry\n(None/Staging/Prod)", fillcolor="#ED7D31"];
+        ML1 -> ML2 -> ML3 -> ML4;
+    }
+    subgraph cluster_lk {
+        label="MinIO VERSIONA DADOS";
+        labeljust=l; labelloc=t; rank=same;
+        style="rounded,filled"; fillcolor="#E2F0D9"; color="#5A8F4B";
+        fontcolor="#5A8F4B"; fontsize=18; fontname="Helvetica";
+        LK1 [label="raw por hora\n(imutavel)", fillcolor="#5A8F4B"];
+        LK2 [label="curated\n(dedup snapshot)", fillcolor="#5A8F4B"];
+        LK3 [label="features\n(materializado)", fillcolor="#5A8F4B"];
+        LK1 -> LK2 -> LK3;
+    }
+}

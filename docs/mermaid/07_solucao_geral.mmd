@@ -1,0 +1,13 @@
+flowchart TB
+  subgraph PIPE[Backend MLOps Docker]
+    AF[Airflow] --> MIN[MinIO]
+    AF --> MLF[MLflow]
+    MIN --> MLF
+  end
+  subgraph CLI[Cliente Final]
+    P[FastAPI /predict]
+    S[FastAPI /search]
+    UI[UIs Airflow/MLflow/MinIO]
+  end
+  MLF --> P
+  MIN --> S

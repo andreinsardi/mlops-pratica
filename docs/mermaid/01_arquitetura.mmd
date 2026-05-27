@@ -1,0 +1,11 @@
+flowchart LR
+  API[HackerNews API] --> AF[Airflow]
+  AF --> MIN[(MinIO data lake)]
+  MIN --> MLF[MLflow Tracking+Registry]
+  MIN --> M1[Modelo Preditivo]
+  MIN --> M2[Modelo Embeddings]
+  M1 --> MLF
+  M2 --> MLF
+  M2 --> PG[(Postgres pgvector)]
+  MLF --> SRV[FastAPI /predict /search]
+  PG --> SRV

@@ -1,0 +1,22 @@
+digraph G {
+    rankdir=LR;
+    bgcolor="white";
+    node [shape=box, style="filled,rounded", fontname="Helvetica", fontsize=14,
+          fontcolor="white", margin="0.25,0.15", penwidth=0];
+    edge [color="#595959", penwidth=2, arrowsize=1.0];
+    splines=spline;
+    nodesep=0.6; ranksep=1.0;
+    E [label="1. extract\nHN topstories", fillcolor="#5A8F4B", shape=box, fontcolor="white"];
+    R [label="2. raw\nparquet", fillcolor="#1F4E79", shape=box, fontcolor="white"];
+    C [label="3. curate\ndedup por id", fillcolor="#1F4E79", shape=box, fontcolor="white"];
+    FT [label="4a. features\ntabular", fillcolor="#ED7D31", shape=box, fontcolor="white"];
+    FX [label="4b. features\ntext", fillcolor="#ED7D31", shape=box, fontcolor="white"];
+    TP [label="treino\npreditivo", fillcolor="#595959", shape=box, fontcolor="white"];
+    TE [label="treino\nembeddings", fillcolor="#595959", shape=box, fontcolor="white"];
+    E -> R;
+    R -> C;
+    C -> FT;
+    C -> FX;
+    FT -> TP;
+    FX -> TE;
+}

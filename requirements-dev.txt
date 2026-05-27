@@ -1,0 +1,9 @@
+# Dependências para rodar testes locais (fora do Docker)
+pytest==8.3.3
+pytest-cov==5.0.0
+ruff==0.6.8
+pandas==2.2.2
+numpy==1.26.4
+requests==2.32.3
+tenacity==8.5.0
+sqlalchemy==1.4.53

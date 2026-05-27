@@ -1,0 +1,20 @@
+digraph G {
+    rankdir=LR;
+    bgcolor="white";
+    node [shape=box, style="filled,rounded", fontname="Helvetica", fontsize=14,
+          fontcolor="white", margin="0.25,0.15", penwidth=0];
+    edge [color="#595959", penwidth=2, arrowsize=1.0];
+    splines=spline;
+    nodesep=0.6; ranksep=1.0;
+    INET [label="Internet", fillcolor="#595959", shape=box, fontcolor="white"];
+    FW [label="Firewall\ntag mlops\n8080/5000/9001/8000", fillcolor="#ED7D31", shape=box, fontcolor="white"];
+    VM [label="Compute Engine\ne2-standard-4\nUbuntu 22.04", fillcolor="#1F4E79", shape=box, fontcolor="white"];
+    DISK [label="Persistent SSD\n200GB", fillcolor="#595959", shape=cylinder, fontcolor="white"];
+    CSQL [label="Cloud SQL\n(evolucao)", fillcolor="#5A8F4B", shape=cylinder, fontcolor="white"];
+    GCS [label="GCS bucket\n(evolucao)", fillcolor="#5A8F4B", shape=cylinder, fontcolor="white"];
+    INET -> FW;
+    FW -> VM;
+    VM -> DISK;
+    VM -> CSQL [style="dashed"];
+    VM -> GCS [style="dashed"];
+}
